@@ -100,7 +100,7 @@ const createTask = (id, value) => {
   task.innerHTML = `
                    
                    ${taskTitle}
-                    <div class="task-options container d-flex justify-content-end align-items-center">
+                    <div class="task-options d-flex justify-content-end align-items-center">
                     ${taskBtns}
                     </div>
                     `;
@@ -153,4 +153,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
     alert.classList.add("show");
   }
+
+  const options = document.querySelectorAll(".task-options");
+
+  if(window.matchMedia("(max-width: 450px").matches){
+    
+    options.forEach((div) => {
+      div.classList.add("container");
+    })
+  }
+
+  window.addEventListener('resize', () => {
+    if(window.matchMedia("(max-width: 450px").matches){  
+      options.forEach((div) => {
+        div.classList.add("container");
+      })
+    } else{
+      options.forEach((div) => {
+        div.classList.remove("container");
+      })
+    }
+  })
 });
